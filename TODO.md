@@ -22,3 +22,5 @@
 - [ ] Uninstall script for Windows
   - [ ] Remove desktop shortcut
   - [ ] Add option to remove dependencies
+
+- [ ] Completely automate the process removing the need of keyboard shortcuts

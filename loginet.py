@@ -23,8 +23,8 @@ def log(msg):
     with open("log.txt", "a") as f:
         f.write(dt_string+": "+msg+"\n")
     
-def send_notif(msg):
-    notification.notify(title="LogiNetwork", message=msg, app_icon="./win/icon.png", timeout=5)
+def send_notif(msg, timeout=5):
+    notification.notify(title="LogiNetwork", message=msg, app_icon="./win/icon.png", timeout=timeout)
 
 def login(username, password):
     driver.get("http://fixwifi.it/")
@@ -46,13 +46,8 @@ def login(username, password):
         send_notif("Login Successful")
         log("Network logged in successfully!!")
 
-try:
-    with open("roll.txt", "r+") as f:
-        data = f.read()
-        rln, pwd = data.split("\n")
-except FileNotFoundError or ValueError:
-    store()
 
+send_notif("Connecting to Network...", timeout=1)
 
 OS = platform.system()
 
@@ -68,6 +63,13 @@ elif OS == "Windows":
     driver = webdriver.Edge(options=options)
 elif OS == "Darwin":
     driver = webdriver.Safari()
+
+try:
+    with open("roll.txt", "r+") as f:
+        data = f.read()
+        rln, pwd = data.split("\n")
+except FileNotFoundError or ValueError:
+    store()
 
 tries = 0
 login(rln, pwd)
