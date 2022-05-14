@@ -1,0 +1,24 @@
+#ToDo
+- [x] Add notifications
+- [x] Add logging
+- [x] Take password as input
+- [ ] Install script for linux
+  - [ ] Install dependencies (pip, selenium, geckodriver)
+  - [ ] Add shortcut keys for Gnome
+  - [ ] Add shortcut keys for KDE
+  - [ ] Add shortcut keys for MATE
+  - [ ] Add shortcut keys for Cinnamon
+  - [ ] Add shortcut keys for Xfce
+- [ ] Install script for Windows
+  - [ ] Install dependencies (python, pip, selenium, msedgedriver)
+  - [ ] Add desktop shortcut with shortcut keys
+- [ ] Uninstall script for Linux
+  - [ ] Remove shortcut keys for Gnome
+  - [ ] Remove shortcut keys for KDE
+  - [ ] Remove shortcut keys for MATE
+  - [ ] Remove shortcut keys for Cinnamon
+  - [ ] Remove shortcut keys for Xfce
+  - [ ] Add option to remove dependencies
+- [ ] Uninstall script for Windows
+  - [ ] Remove desktop shortcut
+  - [ ] Add option to remove dependencies
