@@ -24,7 +24,7 @@ def log(msg):
         f.write(dt_string+": "+msg+"\n")
     
 def send_notif(msg, timeout=5):
-    notification.notify(title="LogiNetwork", message=msg, app_icon="./win/icon.png", timeout=timeout)
+    notification.notify(title="LogiNetwork", message=msg, app_icon="./icon.png", timeout=timeout)
 
 def login(username, password):
     driver.get("http://fixwifi.it/")
@@ -67,7 +67,7 @@ elif OS == "Darwin":
 try:
     with open("roll.txt", "r+") as f:
         data = f.read()
-        rln, pwd = data.split("\n")
+        rln, pwd = data.split(",")
 except FileNotFoundError or ValueError:
     store()
 
