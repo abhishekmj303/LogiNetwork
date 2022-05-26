@@ -1,5 +1,7 @@
 *.log
+*.sh
 *.txt
 !requirements.txt
 /win
 /linux
+/bin
