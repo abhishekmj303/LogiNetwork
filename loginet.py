@@ -1,7 +1,7 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 import os, platform
-from plyer import notification
+from pynotifier import Notification
 from datetime import datetime
 
 abspath = os.path.abspath(__file__)
@@ -14,6 +14,7 @@ def store():
     with open("roll.txt", "w") as f:
         f.write(rln+","+pwd)
     log("Roll no. and password stored successfully!!")
+    return rln, pwd;
 
 def log(msg):
     print(msg)
@@ -24,7 +25,8 @@ def log(msg):
         f.write(dt_string+": "+msg+"\n")
     
 def send_notif(msg, timeout=5):
-    notification.notify(title="LogiNetwork", message=msg, app_icon="./icon.png", timeout=timeout)
+    icon_path = os.path.join(dname, "icon.ico")
+    Notification(title="LogiNetwork", description=msg, icon_path=icon_path, duration=timeout).send()
 
 def login(username, password):
     driver.get("http://fixwifi.it/")
@@ -69,7 +71,7 @@ try:
         data = f.read()
         rln, pwd = data.split(",")
 except FileNotFoundError or ValueError:
-    store()
+    rln, pwd = store()
 
 tries = 0
 login(rln, pwd)

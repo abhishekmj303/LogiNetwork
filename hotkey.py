@@ -1,14 +1,20 @@
-from asyncio import subprocess
-import keyboard, subprocess, platform
+from pynput import keyboard
+import os, platform
 
-def login(os):
-    if os == "Linux":
-        subprocess.run(["python3", "/opt/LogiNetwork/loginet.py"])
-    elif os == "Windows":
-        subprocess.run(["python", "C:\\Program Files\\LogiNetwork\\loginet.py"])
+def on_activate():
+    OS = platform.system()
+    if OS == "Linux":
+        os.system('/bin/python /home/abhishek/Programs/LogiNetwork/loginet.py')
+    elif OS == "Windows":
+        os.system("python C:\\Program Files\\LogiNetwork\\loginet.py")
 
-os = platform.system()
+def for_canonical(f):
+    return lambda k: f(l.canonical(k))
 
-keyboard.add_hotkey("ctrl+alt+shift+l", login(os))
-
-keyboard.wait()
+hotkey = keyboard.HotKey(
+    keyboard.HotKey.parse('<shift>+<ctrl>+<alt>+l'),
+    on_activate)
+with keyboard.Listener(
+        on_press=for_canonical(hotkey.press),
+        on_release=for_canonical(hotkey.release)) as l:
+    l.join()
