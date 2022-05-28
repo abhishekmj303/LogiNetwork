@@ -96,6 +96,7 @@ mv icon.ico /opt/LogiNetwork/
 mv roll.txt /opt/LogiNetwork/
 mv linux/uninstall.sh /opt/LogiNetwork/
 
+mkdir -p /home/${uname}/.config/systemd/user
 mv linux/loginet.service /home/${uname}/.config/systemd/user/
 systemctl --user enable loginet.service
 systemctl --user start loginet.service
