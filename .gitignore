@@ -2,6 +2,7 @@
 *.sh
 *.txt
 !requirements.txt
+!install.sh
+!uninstall.sh
 /win
-/linux
 /bin

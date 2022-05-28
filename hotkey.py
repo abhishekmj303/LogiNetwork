@@ -4,7 +4,7 @@ import os, platform
 def on_activate():
     OS = platform.system()
     if OS == "Linux":
-        os.system('/bin/python /home/abhishek/Programs/LogiNetwork/loginet.py')
+        os.system('/bin/python3 /opt/LogiNetwork/loginet.py')
     elif OS == "Windows":
         os.system("python C:\\Program Files\\LogiNetwork\\loginet.py")
 

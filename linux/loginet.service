@@ -1,0 +1,11 @@
+[Unit]
+Description=LogiNetwork
+
+[Service]
+ExecStart=/bin/python3 /opt/LogiNetwork/hotkey.py
+WorkingDirectory=/opt/LogiNetwork/
+Restart=on-failure
+RestartSec=3
+
+[Install]
+WantedBy=default.target
