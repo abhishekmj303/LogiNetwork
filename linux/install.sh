@@ -103,4 +103,4 @@ systemctl --user start loginet.service
 
 echo "Installation complete"
 echo
-echo ">>>> Use Shift+Ctrl+Alt+L to Login to College Network <<<<"
+echo ">>>> Use Shift+Alt+i to Login to College Network <<<<"
