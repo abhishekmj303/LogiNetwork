@@ -1,6 +1,12 @@
 # LogiNetwork
 Login to IIITDM College Network
 
+## Installation
+- ### Linux
+  ```
+  bash <(curl -s https://raw.githubusercontent.com/abhishekmj303/LogiNetwork/master/linux/install.sh)
+  ```
+
 ## Requirements
 - ### Windows
   - [Python 3](https://www.python.org/downloads)
@@ -10,9 +16,9 @@ Login to IIITDM College Network
     pip install -r requirements.txt
     ```
 - ### Linux
-  - pip3 and geckodriver (for Ubuntu):
+  - pip, geckodriver and libnotify: (for Ubuntu)
     ```
-    sudo apt-get install python3-pip firefox-geckodriver
+    sudo apt install python3-pip firefox-geckodriver libnotify-bin
     ```
   - Required packages:
     ```
@@ -20,7 +26,7 @@ Login to IIITDM College Network
     ```
 ## Usage
 Most efficient way to use the script is to run it from the shortcut keys.
-- Linux: You can set custom keyboard shortcuts in your Settings App.
+- Linux: Default Hotkey is "Shift+Ctrl+Alt+L"
 - Windows: 
   1. Create Shortcut (.lnk) of the [Python file](loginet.py)
   2. Right-click the shortcut and set keyboard shortcut in the properties.

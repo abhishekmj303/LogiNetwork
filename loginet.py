@@ -38,9 +38,12 @@ def login(username, password):
             return
         
         log("Trying to login with your Roll no...")
-        driver.find_element(By.NAME, "username").send_keys(username)
-        driver.find_element(By.NAME, "password").send_keys(password)
-        driver.find_element(By.XPATH, '//*[@id="Form1"]/table/tbody/tr[4]/th/div/table/tbody/tr[2]/th/div/p[3]/input').click()
+        driver.find_element(By.XPATH, '//*[@id="ft_un"]').send_keys(username)
+        driver.find_element(By.XPATH, '//*[@id="ft_pd"]').send_keys(password)
+        try:
+            driver.find_element(By.XPATH, '//*[@id="Form1"]/table/tbody/tr[4]/th/div/table/tbody/tr[2]/th/div/p[3]/input').click()
+        except selenium.common.exceptions.NoSuchElementException as e:
+            log(e)
 
         tries += 1
         login(username, password)
@@ -60,9 +63,15 @@ if OS == "Linux":
     driver = webdriver.Firefox(options=options)
 elif OS == "Windows":
     from selenium.webdriver.edge.options import Options
+    from selenium.webdriver.edge.service import Service
+    from subprocess import CREATE_NO_WINDOW
+
+    service = Service()
+    service.creationflags = CREATE_NO_WINDOW
     options = Options()
     options.add_argument("--headless")
-    driver = webdriver.Edge(options=options)
+    options.add_argument("--ignore-certificate-errors")
+    driver = webdriver.Edge(options=options, service=service)
 elif OS == "Darwin":
     driver = webdriver.Safari()
 
