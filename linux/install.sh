@@ -11,47 +11,69 @@ fi
 ubuntu()
 {
     sudo apt update
-    if [[ $GIT -ne 0 || $PIP -ne 0 ]]; then
-        sudo apt install -y git python3-pip
+    if [[ $GIT -ne 0 ]]; then
+        sudo apt install -y git
     fi
-    sudo apt install -y firefox-geckodriver libnotify-bin
+    if [[ $PIP -ne 0 ]]; then
+        sudo apt install -y python3-pip
+    fi
+    if [[ $NOTIFY -ne 0 ]]; then
+        sudo apt install -y libnotify-bin
+    fi
+    if [[ $GECKO -ne 0 ]]; then
+        sudo apt install -y firefox-geckodriver
+    fi
 }
 
 arch()
 {
-    if [[ $GIT -ne 0 || $PIP -ne 0 ]]; then
-        read -p "Do you want to update system? [y/n] " -n 1 -r
-        echo
-        if [[ $REPLY =~ ^[Yy]$ ]]; then
-            sudo pacman -Syu
-        fi
-        sudo pacman -S --noconfirm git python-pip
+    read -p "Do you want to update system? [y/n] " -n 1 -r
+    echo
+    if [[ $REPLY =~ ^[Yy]$ ]]; then
+        sudo pacman -Syu --noconfirm
     fi
-    sudo pacman -S --noconfirm geckodriver libnotify
+    if [[ $GIT -ne 0 ]]; then
+        sudo pacman -S --noconfirm git
+    fi
+    if [[ $PIP -ne 0 ]]; then
+        sudo pacman -S --noconfirm python-pip
+    fi
+    if [[ $NOTIFY -ne 0 ]]; then
+        sudo pacman -S --noconfirm libnotify
+    fi
+    if [[ $GECKO -ne 0 ]]; then
+        sudo pacman -S --noconfirm geckodriver
+    fi
 }
 
 git --version 2>&1 >/dev/null
 GIT=$?
 pip3 -V 2>&1 >/dev/null
 PIP=$?
+notify-send -v >2&1 >/dev/null
+NOTIFY=$?
+geckodriver -V 2>&1 >/dev/null
+GECKO=$?
 
-echo "Installing Dependencies..."
-echo
+if [[ $GIT -ne 0 || $PIP -ne 0 || $NOTIFY -ne 0 || $GECKO -ne 0 ]]; then
+    echo "Installing Dependencies..."
+    echo
 
-PS3="Please select the number for your OS / distro: "
-select _ in \
-    "Ubuntu/Debian based" \
-    "Arch Linux based"
-do
-    case $REPLY in
-    1) ubuntu
-    break ;;
-    2) arch
-    break ;;
-    *) echo "Invalid option"
-    break ;;
-    esac
-done
+    PS3="Please select the number for your OS / distro: "
+    select _ in \
+        "Ubuntu/Debian based" \
+        "Arch Linux based"
+    do
+        case $REPLY in
+        1) ubuntu
+        break ;;
+        2) arch
+        break ;;
+        *) echo "Invalid option"
+        break ;;
+        esac
+    done
+fi
 
 sudo rm -rf /tmp/loginetwork
 git clone https://github.com/abhishekmj303/LogiNetwork.git /tmp/loginetwork
