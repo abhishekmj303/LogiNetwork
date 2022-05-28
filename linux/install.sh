@@ -50,7 +50,7 @@ git --version 2>&1 >/dev/null
 GIT=$?
 pip3 -V 2>&1 >/dev/null
 PIP=$?
-notify-send -v >2&1 >/dev/null
+notify-send -v 2>&1 >/dev/null
 NOTIFY=$?
 geckodriver -V 2>&1 >/dev/null
 GECKO=$?
