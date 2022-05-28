@@ -53,7 +53,7 @@ do
     esac
 done
 
-sudo rm -r /tmp/loginetwork
+sudo rm -rf /tmp/loginetwork
 git clone https://github.com/abhishekmj303/LogiNetwork.git /tmp/loginetwork
 cd /tmp/loginetwork
 sudo pip3 install -r requirements.txt
@@ -75,8 +75,8 @@ mv roll.txt /opt/LogiNetwork/
 mv linux/uninstall.sh /opt/LogiNetwork/
 
 mv linux/loginet.service /home/${uname}/.config/systemd/user/
-systemctl --user ${uname} enable loginet.service
-systemctl --user ${uname} start loginet.service
+systemctl --user enable loginet.service
+systemctl --user start loginet.service
 
 echo "Installation complete"
 echo
