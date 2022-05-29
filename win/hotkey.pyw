@@ -1,7 +1,7 @@
 import keyboard, subprocess, os
 
 def on_activate():
-    py_file = os.path.join(os.environ['LOCALAPPDATA'], "LogiNetwork", "loginet.py")
+    py_file = os.path.join(os.environ['USERPROFILE'], "LogiNetwork", "loginet.py")
     subprocess.run(["pythonw", py_file])
 
 # Change the hotkey to whatever you want

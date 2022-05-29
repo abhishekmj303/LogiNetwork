@@ -1,5 +1,5 @@
 selenium>=4.0.0
 py-notifier
-pynput; sys_platform == 'linux'
-keyboard; sys_platform == 'windows'
-webdriver-manager; sys_platform == 'windows'
+pynput; platform_system == 'Linux'
+keyboard; platform_system == 'Windows'
+webdriver-manager; platform_system == 'Windows'

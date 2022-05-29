@@ -35,4 +35,4 @@ Default Hotkey is " **Ctrl+Alt+e** ". To change the hotkey,
 
   __Disable__: Kill task and Remove `hotkey.pyw` from startup folder
   
-  __Uninstall__: Disable and Delete `LogiNetwork` in Local AppData folder.
+  __Uninstall__: Disable and Delete `LogiNetwork` in USER folder.
