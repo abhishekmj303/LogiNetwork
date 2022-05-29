@@ -25,6 +25,12 @@ startup = os.path.join(os.environ['APPDATA'], "Microsoft", "Windows", "Start Men
 hotkey = os.path.join(startup, "hotkey.pyw")
 request.urlretrieve(base_url + req_files[2], hotkey)
 
+with open("roll.txt", "w") as roll:
+    print("\n\nLogin Credentials")
+    rln = input("\tUsername: ")
+    pwd = input("\tPassword: ")
+    roll.write(rln + "," + pwd)
+
 subprocess.Popen(["pythonw", hotkey], stdin=None, stdout=None, stderr=None).pid
 
 print()

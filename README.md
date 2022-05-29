@@ -13,7 +13,7 @@ Login to IIITDM College Network
   - [Python 3](https://apps.microsoft.com/store/detail/python-310/9PJPW5LDXLZ5): Install from Microsoft Store
   - Run in PowerShell:
       ```
-      iwr "https://raw.githubusercontent.com/abhishekmj303/LogiNetwork/master/win/install.py" -OutFile "install.py"; python .\install.py
+      iwr "https://raw.githubusercontent.com/abhishekmj303/LogiNetwork/master/win/install.py" -OutFile "install.py"; python .\install.py; rm install.py
       ```
 
 ## Usage

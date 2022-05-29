@@ -9,6 +9,7 @@ dname = os.path.dirname(abspath)
 os.chdir(dname)
 
 def store():
+    send_notif("Login Credentials Required")
     rln = input("Roll no. not found!!!\n   Enter your Roll no. : ")
     pwd = input("   Enter your password: ")
     with open("roll.txt", "w") as f:
@@ -64,7 +65,7 @@ if OS == "Linux":
 elif OS == "Windows":
     from selenium.webdriver.edge.options import Options
     from selenium.webdriver.edge.service import Service
-    from webdriver-manager.microsoft import EdgeChromiumDriverManager
+    from webdriver_manager.microsoft import EdgeChromiumDriverManager
     from subprocess import CREATE_NO_WINDOW
 
     service = Service(EdgeChromiumDriverManager().install())
