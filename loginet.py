@@ -38,12 +38,12 @@ def login(username, password):
             return
         
         log("Trying to login with your Roll no...")
-        driver.find_element(By.XPATH, '//*[@id="ft_un"]').send_keys(username)
-        driver.find_element(By.XPATH, '//*[@id="ft_pd"]').send_keys(password)
         try:
+            driver.find_element(By.XPATH, '//*[@id="ft_un"]').send_keys(username)
+            driver.find_element(By.XPATH, '//*[@id="ft_pd"]').send_keys(password)
             driver.find_element(By.XPATH, '//*[@id="Form1"]/table/tbody/tr[4]/th/div/table/tbody/tr[2]/th/div/p[3]/input').click()
-        except selenium.common.exceptions.NoSuchElementException as e:
-            log(e)
+        except Exception as e:
+            print(e)
 
         tries += 1
         login(username, password)
@@ -64,9 +64,10 @@ if OS == "Linux":
 elif OS == "Windows":
     from selenium.webdriver.edge.options import Options
     from selenium.webdriver.edge.service import Service
+    from webdriver-manager.microsoft import EdgeChromiumDriverManager
     from subprocess import CREATE_NO_WINDOW
 
-    service = Service()
+    service = Service(EdgeChromiumDriverManager().install())
     service.creationflags = CREATE_NO_WINDOW
     options = Options()
     options.add_argument("--headless")

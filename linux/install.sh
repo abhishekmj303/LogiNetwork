@@ -78,7 +78,7 @@ fi
 sudo rm -rf /tmp/loginetwork
 git clone https://github.com/abhishekmj303/LogiNetwork.git /tmp/loginetwork
 cd /tmp/loginetwork
-sudo pip3 install -r requirements.txt
+pip3 install -r requirements.txt
 
 touch roll.txt
 echo
@@ -91,9 +91,9 @@ echo
 sudo mkdir -p /opt/LogiNetwork
 sudo chown -R ${uname}:${uname} /opt/LogiNetwork
 mv loginet.py /opt/LogiNetwork/
-mv hotkey.py /opt/LogiNetwork/
 mv icon.ico /opt/LogiNetwork/
 mv roll.txt /opt/LogiNetwork/
+mv linux/hotkey.py /opt/LogiNetwork/
 mv linux/uninstall.sh /opt/LogiNetwork/
 
 mkdir -p /home/${uname}/.config/systemd/user
@@ -103,4 +103,4 @@ systemctl --user start loginet.service
 
 echo "Installation complete"
 echo
-echo ">>>> Use Shift+Alt+i to Login to College Network <<<<"
+echo ">>>> Use Ctrl+Alt+e to Login to College Network <<<<"

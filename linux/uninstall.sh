@@ -9,3 +9,5 @@ systemctl --user disable loginet.service
 rm /home/${uname}/.config/systemd/user/loginet.service
 
 sudo rm -rf /opt/LogiNetwork
+
+echo ">>>> Removed the program from the system <<<<"

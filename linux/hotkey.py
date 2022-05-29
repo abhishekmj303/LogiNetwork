@@ -1,18 +1,15 @@
 from pynput import keyboard
-import os, platform
+import os
 
 def on_activate():
-    OS = platform.system()
-    if OS == "Linux":
-        os.system('/bin/python3 /opt/LogiNetwork/loginet.py')
-    elif OS == "Windows":
-        os.system("python C:\\Program Files\\LogiNetwork\\loginet.py")
+    os.system('/bin/python3 /opt/LogiNetwork/loginet.py')
 
 def for_canonical(f):
     return lambda k: f(l.canonical(k))
 
+# Change the hotkey to whatever you want
 hotkey = keyboard.HotKey(
-    keyboard.HotKey.parse('<shift>+<alt>+i'),
+    keyboard.HotKey.parse('<ctrl>+<alt>+e'),
     on_activate)
 with keyboard.Listener(
         on_press=for_canonical(hotkey.press),
