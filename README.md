@@ -1,19 +1,22 @@
 # LogiNetwork
-Login to IIITDM College Network
+Automatically login to IIITDM College LAN/WiFi with hotkey (**Ctrl+Alt+e**)
 
 ## Installation
 - ### Linux
+  ![](linux/linux.gif)
   ```
   bash <(curl -s https://raw.githubusercontent.com/abhishekmj303/LogiNetwork/master/linux/install.sh)
   ```
   **Note**: Install curl if not installed,
     - For Ubuntu: `sudo apt install curl`
     - For Arch: `sudo pacman -S curl`
+
 - ### Windows
-  - [Python 3](https://apps.microsoft.com/store/detail/python-310/9PJPW5LDXLZ5): Install from Microsoft Store
+  ![](win/win10.gif)
+  - [Python 3](https://apps.microsoft.com/store/detail/python-310/9PJPW5LDXLZ5): Install from Microsoft Store (If not installed alredy)
   - Run in PowerShell:
       ```
-      iwr "https://raw.githubusercontent.com/abhishekmj303/LogiNetwork/master/win/install.py" -OutFile "install.py"; python .\install.py; rm install.py
+      iwr "https://raw.githubusercontent.com/abhishekmj303/LogiNetwork/master/win/install.py" -OutFile "install.py"; python .\install.py; rm .\install.py
       ```
 
 ## Usage
