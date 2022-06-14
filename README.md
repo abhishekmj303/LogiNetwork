@@ -13,7 +13,7 @@ Automatically login to IIITDM College LAN/WiFi with hotkey (**Ctrl+Alt+e**)
 
 - ### Windows
   ![](win/win10.gif)
-  - [Python 3](https://apps.microsoft.com/store/detail/python-310/9PJPW5LDXLZ5): Install from Microsoft Store (If not installed alredy)
+  - [Python 3](https://apps.microsoft.com/store/detail/python-310/9PJPW5LDXLZ5): Install from Microsoft Store (If not installed already)
   - Run in PowerShell:
       ```
       iwr "https://raw.githubusercontent.com/abhishekmj303/LogiNetwork/master/win/install.py" -OutFile "install.py"; python .\install.py; rm .\install.py
