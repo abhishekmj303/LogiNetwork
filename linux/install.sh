@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -e
+
 uname=$USER
 
 if ! (nc -zw1 8.8.8.8 443); then
@@ -55,6 +55,7 @@ NOTIFY=$?
 geckodriver -V 2>&1 >/dev/null
 GECKO=$?
 
+set -e
 if [[ $GIT -ne 0 || $PIP -ne 0 || $NOTIFY -ne 0 || $GECKO -ne 0 ]]; then
     echo "Installing Dependencies..."
     echo
