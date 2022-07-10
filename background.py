@@ -87,7 +87,6 @@ def hotkey_win():
     keyboard.wait()
 
 if __name__ == "__main__":
-    on_change()
     t1 = threading.Thread(target=watch_network)
     if OS == 'Linux':
         t2 = threading.Thread(target=hotkey_linux)
@@ -96,3 +95,4 @@ if __name__ == "__main__":
 
     t1.start()
     t2.start()
+    on_change()
