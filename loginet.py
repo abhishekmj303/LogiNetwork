@@ -41,11 +41,7 @@ def is_online():
         return False
 
 def login(username, password):
-    if (is_online() == True):
-        send_notif("Network is online")
-        log("Network is online")
-        return
-
+    driver.set_page_load_timeout(2)
     driver.get("http://fixwifi.it/")
     if driver.current_url != "http://fixwifi.it/":
         global tries
@@ -73,6 +69,11 @@ def login(username, password):
 
 
 send_notif("Connecting to Network...", timeout=1)
+if (is_online() == True):
+    send_notif("Network is already online")
+    log("Network is already online")
+    log("\t---x---x---x---x---x---")
+    exit()
 
 OS = platform.system()
 
