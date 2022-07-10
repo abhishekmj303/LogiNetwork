@@ -2,10 +2,10 @@
 Description=LogiNetwork
 
 [Service]
-ExecStart=/bin/python3 /opt/LogiNetwork/hotkey.py
+ExecStart=/bin/python3 /opt/LogiNetwork/background.py
 WorkingDirectory=/opt/LogiNetwork/
 Restart=on-failure
-RestartSec=3
+RestartSec=5
 
 [Install]
 WantedBy=default.target
