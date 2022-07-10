@@ -41,7 +41,6 @@ def is_online():
         return False
 
 def login(username, password):
-    driver.set_page_load_timeout(2)
     driver.get("http://fixwifi.it/")
     if driver.current_url != "http://fixwifi.it/":
         global tries

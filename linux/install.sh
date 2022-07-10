@@ -81,10 +81,10 @@ if [[ $GIT -ne 0 || $PIP -ne 0 || $NOTIFY -ne 0 || $GECKO -ne 0 ]]; then
 fi
 
 sudo rm -rf /tmp/loginetwork
-echo "Cloning the repository..."
+echo "Downloading LogiNetwork..."
 git clone -q https://github.com/abhishekmj303/LogiNetwork.git /tmp/loginetwork
 cd /tmp/loginetwork
-echo "Installing python dependencies... (this may take some while)"
+echo "Installing python dependencies... (this may take a while)"
 pip3 install -r requirements.txt >/dev/null
 
 touch roll.txt
