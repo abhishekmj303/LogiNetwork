@@ -50,13 +50,13 @@ arch()
     fi
 }
 
-git --version 2>&1 >/dev/null
+git --version >/dev/null 2>&1
 GIT=$?
-pip3 -V 2>&1 >/dev/null
+pip3 -V >/dev/null 2>&1
 PIP=$?
-notify-send -v 2>&1 >/dev/null
+notify-send -v >/dev/null 2>&1
 NOTIFY=$?
-geckodriver -V 2>&1 >/dev/null
+geckodriver -V >/dev/null 2>&1
 GECKO=$?
 
 set -e
@@ -109,8 +109,8 @@ mv linux/uninstall.sh /opt/LogiNetwork/
 echo "  -Creating a systemd service for user: ${uname}"
 mkdir -p /home/${uname}/.config/systemd/user
 mv linux/loginet.service /home/${uname}/.config/systemd/user/
-systemctl --user enable loginet.service >/dev/null
-systemctl --user start loginet.service >/dev/null
+systemctl --user enable loginet.service >/dev/null 2>&1
+systemctl --user start loginet.service
 
 echo "  -Installation complete"
 echo
