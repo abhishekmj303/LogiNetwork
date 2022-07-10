@@ -3,6 +3,7 @@ from selenium.webdriver.common.by import By
 import os, platform
 from pynotifier import Notification
 from datetime import datetime
+from urllib import request, error
 
 abspath = os.path.abspath(__file__)
 dname = os.path.dirname(abspath)
@@ -29,7 +30,22 @@ def send_notif(msg, timeout=5):
     icon_path = os.path.join(dname, "icon.ico")
     Notification(title="LogiNetwork", description=msg, icon_path=icon_path, duration=timeout).send()
 
+def is_online():
+    try:
+        resp = request.urlopen("http://fixwifi.it/")
+        if resp.url == "http://fixwifi.it/":
+            return True
+    except error.URLError as e:
+        if "[Errno -2]" in str(e):
+            return True
+        return False
+
 def login(username, password):
+    if (is_online() == True):
+        send_notif("Network is online")
+        log("Network is online")
+        return
+
     driver.get("http://fixwifi.it/")
     if driver.current_url != "http://fixwifi.it/":
         global tries
@@ -51,6 +67,9 @@ def login(username, password):
     else:
         send_notif("Login Successful")
         log("Network logged in successfully!!")
+    
+    if (OS == "Windows"):
+        dr_mngr().install()
 
 
 send_notif("Connecting to Network...", timeout=1)
@@ -65,10 +84,10 @@ if OS == "Linux":
 elif OS == "Windows":
     from selenium.webdriver.edge.options import Options
     from selenium.webdriver.edge.service import Service
-    from webdriver_manager.microsoft import EdgeChromiumDriverManager
+    from webdriver_manager.microsoft import EdgeChromiumDriverManager as dr_mngr
     from subprocess import CREATE_NO_WINDOW
 
-    service = Service(EdgeChromiumDriverManager().install())
+    service = Service(dr_mngr()._get_driver_path(dr_mngr().driver))
     service.creationflags = CREATE_NO_WINDOW
     options = Options()
     options.add_argument("--headless")

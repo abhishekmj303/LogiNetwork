@@ -9,7 +9,7 @@ if os.path.exists(dname):
     shutil.rmtree(dname_old, ignore_errors=True)
 os.mkdir(dname)
 
-req_files = ["loginet.py", "icon.ico", "win/hotkey.pyw", "requirements.txt"]
+req_files = ["loginet.py", "icon.ico", "background.py", "requirements.txt"]
 base_url = "https://raw.githubusercontent.com/abhishekmj303/LogiNetwork/master/"
 for f in req_files:
     print(base_url + f)
@@ -22,7 +22,7 @@ print("Installing pip dependencies...")
 subprocess.run("pip install -r requirements.txt", shell=True)
 
 startup = os.path.join(os.environ['APPDATA'], "Microsoft", "Windows", "Start Menu", "Programs", "Startup")
-hotkey = os.path.join(startup, "hotkey.pyw")
+hotkey = os.path.join(startup, "loginet_bg.pyw")
 request.urlretrieve(base_url + req_files[2], hotkey)
 
 with open("roll.txt", "w") as roll:
@@ -32,6 +32,9 @@ with open("roll.txt", "w") as roll:
     roll.write(rln + "," + pwd)
 
 subprocess.Popen(["pythonw", hotkey], stdin=None, stdout=None, stderr=None).pid
+
+from webdriver_manager.microsoft import EdgeChromiumDriverManager
+EdgeChromiumDriverManager().install()
 
 print()
 print()

@@ -15,3 +15,4 @@
   - [ ] Remove desktop shortcut
 
 - [ ] Completely automate the process removing the need of keyboard shortcuts
+- [x] Driver was updating before login -> Driver path not able to pass during login

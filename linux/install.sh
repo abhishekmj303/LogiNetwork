@@ -94,7 +94,7 @@ sudo chown -R ${uname}:${uname} /opt/LogiNetwork
 mv loginet.py /opt/LogiNetwork/
 mv icon.ico /opt/LogiNetwork/
 mv roll.txt /opt/LogiNetwork/
-mv linux/hotkey.py /opt/LogiNetwork/
+mv background.py /opt/LogiNetwork/
 mv linux/uninstall.sh /opt/LogiNetwork/
 
 mkdir -p /home/${uname}/.config/systemd/user
