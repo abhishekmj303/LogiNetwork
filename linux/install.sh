@@ -82,10 +82,10 @@ fi
 
 sudo rm -rf /tmp/loginetwork
 echo "Cloning the repository..."
-git clone https://github.com/abhishekmj303/LogiNetwork.git /tmp/loginetwork 2>&1 >/dev/null
+git clone -q https://github.com/abhishekmj303/LogiNetwork.git /tmp/loginetwork
 cd /tmp/loginetwork
 echo "Installing python dependencies... (this may take some while)"
-pip3 install -r requirements.txt 2>&1 >/dev/null
+pip3 install -r requirements.txt >/dev/null
 
 touch roll.txt
 echo
@@ -109,8 +109,8 @@ mv linux/uninstall.sh /opt/LogiNetwork/
 echo "  -Creating a systemd service for user: ${uname}"
 mkdir -p /home/${uname}/.config/systemd/user
 mv linux/loginet.service /home/${uname}/.config/systemd/user/
-systemctl --user enable loginet.service 2>&1 >/dev/null
-systemctl --user start loginet.service 2>&1 >/dev/null
+systemctl --user enable loginet.service >/dev/null
+systemctl --user start loginet.service >/dev/null
 
 echo "  -Installation complete"
 echo
