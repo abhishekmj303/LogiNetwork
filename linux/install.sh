@@ -1,5 +1,9 @@
 #!/bin/bash
 
+echo "LogiNetwork:"
+echo "    Completely automate the College Wifi/LAN"
+echo "    https//github.com/abhishekmj303/LogiNetwork"
+echo
 
 uname=$USER
 
@@ -46,13 +50,13 @@ arch()
     fi
 }
 
-git --version 2>&1 >/dev/null
+git --version >/dev/null 2>&1
 GIT=$?
-pip3 -V 2>&1 >/dev/null
+pip3 -V >/dev/null 2>&1
 PIP=$?
-notify-send -v 2>&1 >/dev/null
+notify-send -v >/dev/null 2>&1
 NOTIFY=$?
-geckodriver -V 2>&1 >/dev/null
+geckodriver -V >/dev/null 2>&1
 GECKO=$?
 
 set -e
@@ -77,31 +81,38 @@ if [[ $GIT -ne 0 || $PIP -ne 0 || $NOTIFY -ne 0 || $GECKO -ne 0 ]]; then
 fi
 
 sudo rm -rf /tmp/loginetwork
-git clone https://github.com/abhishekmj303/LogiNetwork.git /tmp/loginetwork
+echo "Downloading LogiNetwork..."
+git clone -q https://github.com/abhishekmj303/LogiNetwork.git /tmp/loginetwork
 cd /tmp/loginetwork
-pip3 install -r requirements.txt
+echo "Installing python dependencies... (this may take a while)"
+pip3 install -r requirements.txt >/dev/null
 
 touch roll.txt
 echo
-echo "Login Credentials"
+echo "Enter your Login Credentials"
 read -p "Username: " username
 read -p "Password: " password
 echo "${username},${password}" >roll.txt
 echo
 
+echo
+echo "Installing the application..."
+echo "  -Installation folder: /opt/LogiNetwork"
 sudo mkdir -p /opt/LogiNetwork
 sudo chown -R ${uname}:${uname} /opt/LogiNetwork
 mv loginet.py /opt/LogiNetwork/
 mv icon.ico /opt/LogiNetwork/
 mv roll.txt /opt/LogiNetwork/
-mv linux/hotkey.py /opt/LogiNetwork/
+mv background.py /opt/LogiNetwork/
 mv linux/uninstall.sh /opt/LogiNetwork/
 
+echo "  -Creating a systemd service for user: ${uname}"
 mkdir -p /home/${uname}/.config/systemd/user
 mv linux/loginet.service /home/${uname}/.config/systemd/user/
-systemctl --user enable loginet.service
+systemctl --user enable loginet.service >/dev/null 2>&1
 systemctl --user start loginet.service
 
-echo "Installation complete"
+echo "  -Installation complete"
 echo
-echo ">>>> Use Ctrl+Alt+e to Login to College Network <<<<"
+echo "College WiFi/LAN login is now automatically done"
+echo "You can also explicitly use Ctrl+Alt+e to login (if not working properly)"

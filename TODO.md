@@ -1,4 +1,5 @@
 #ToDo
+
 - [x] Add notifications
 - [x] Add logging
 - [x] Take password as input
@@ -11,7 +12,10 @@
 - [x] Uninstall script for Linux
   - [x] Remove hotkey
   - [x] Delete installed files
-- [ ] Uninstall script for Windows
-  - [ ] Remove desktop shortcut
+- [x] Uninstall script for Windows
 
-- [ ] Completely automate the process removing the need of keyboard shortcuts
+  - [x] Remove hotkey
+  - [x] Delete installed files
+
+- [x] Completely automate the process removing the need of keyboard shortcuts
+- [x] Driver was updating before login -> Driver path not able to pass during login
