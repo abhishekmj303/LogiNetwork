@@ -1,4 +1,3 @@
-from webdriver_manager.microsoft import EdgeChromiumDriverManager
 import subprocess
 import shutil
 import os
@@ -36,6 +35,7 @@ print("Installing python dependencies... (This may take a while)")
 subprocess.run("pip install -r requirements.txt", shell=True)
 
 print("Installing MSEdge-webdriver... (This may take a while)")
+from webdriver_manager.microsoft import EdgeChromiumDriverManager
 EdgeChromiumDriverManager().install()
 
 print("Installing Application...")
