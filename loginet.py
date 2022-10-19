@@ -34,7 +34,7 @@ def log(msg):
 
 def send_notif(msg, timeout=5):
     icon_path = os.path.join(dname, "icon.ico")
-    Notification(title="LogiNetwork", description=msg,
+    Notification(title="LogiNetwork", description=msg, urgency="normal",
                  icon_path=icon_path, duration=timeout).send()
 
 

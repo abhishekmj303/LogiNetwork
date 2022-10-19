@@ -29,6 +29,32 @@ ubuntu()
     fi
 }
 
+fedora()
+{
+    if [[ $GIT -ne 0 ]]; then
+        sudo dnf install -y git
+    fi
+    if [[ $PIP -ne 0 ]]; then
+        sudo dnf install -y python3-pip
+    fi
+    if [[ $NOTIFY -ne 0 ]]; then
+        sudo dnf install -y libnotify
+    fi
+    if [[ $GECKO -ne 0 ]]; then
+        if [[ $WGET -ne 0 ]]; then
+            sudo dnf install -y wget
+        fi
+        cd /tmp
+        curl -s https://api.github.com/repos/mozilla/geckodriver/releases/latest \
+        | grep "browser_download_url.*linux64.tar.gz" \
+        | cut -d : -f 2,3 | tr -d \" | wget -qi -
+        tar -xzf geckodriver*.tar.gz
+        chmod +x geckodriver
+        sudo mv geckodriver /usr/local/bin/
+        cd -
+    fi
+}
+
 arch()
 {
     read -p "Do you want to update system? [y/n] " -n 1 -r
@@ -58,6 +84,8 @@ notify-send -v >/dev/null 2>&1
 NOTIFY=$?
 geckodriver -V >/dev/null 2>&1
 GECKO=$?
+wget -V >/dev/null 2>&1
+WGET=$?
 
 set -e
 if [[ $GIT -ne 0 || $PIP -ne 0 || $NOTIFY -ne 0 || $GECKO -ne 0 ]]; then
@@ -67,12 +95,15 @@ if [[ $GIT -ne 0 || $PIP -ne 0 || $NOTIFY -ne 0 || $GECKO -ne 0 ]]; then
     PS3="Please select the number for your OS / distro: "
     select _ in \
         "Ubuntu/Debian based" \
+        "Fedora based" \
         "Arch Linux based"
     do
         case $REPLY in
         1) ubuntu
         break ;;
-        2) arch
+        2) fedora
+        break ;;
+        3) arch
         break ;;
         *) echo "Invalid option"
         break ;;

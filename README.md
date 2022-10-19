@@ -15,6 +15,7 @@ Automatically login to IIITDM College LAN/WiFi
   **Note**: Install curl if not installed,
 
   - For Ubuntu: `sudo apt install curl`
+  - For Fedora: `sudo dnf install curl`
   - For Arch: `sudo pacman -S curl`
 
 - ### Windows
